@@ -1,0 +1,582 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 688,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "a62d0a55-65a9-4f34-88fb-fc06310ff809"
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 5,
+        "x": 0,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "![Photo du coureur](${url})",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "dataset": "fcastella",
+          "datasource": {
+            "type": "mysql",
+            "uid": "a62d0a55-65a9-4f34-88fb-fc06310ff809"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "",
+          "refId": "A"
+        }
+      ],
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "a62d0a55-65a9-4f34-88fb-fc06310ff809"
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 7,
+        "x": 5,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "#  ![drapeau](https://flagsapi.com/${code}/flat/64.png) ${coureurs}\n---\n## Équipe : ${equipe}\n## Nationalité : ${nationalite}\n## Date de Naissance : ${date}\n ## **Classement final : ${classement}/176**\n---\n<img src=\"https://cdn.xsolla.net/merchant-bucket-prod/files/uploaded/sitebuilder/68486/9213790f13f905ebf374bb6564d6b530.png\" alt=\"image\" width=\"150\" height=\"auto\">",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "dataset": "aastier",
+          "datasource": {
+            "type": "mysql",
+            "uid": "a62d0a55-65a9-4f34-88fb-fc06310ff809"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "",
+          "refId": "A"
+        }
+      ],
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "mode": "basic",
+              "type": "color-background"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 1
+              },
+              {
+                "color": "#959595",
+                "value": 2
+              },
+              {
+                "color": "#EF843C",
+                "value": 3
+              },
+              {
+                "color": "green",
+                "value": 4
+              },
+              {
+                "color": "transparent",
+                "value": 11
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Étape"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "auto"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 22,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 5,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "dataset": "aastier",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT numeroEtape AS Étape,\r\nclassementEtape AS 'Classement de l''Étape',\r\nclassementGeneral AS 'Classement Général'\r\nFROM view_tableau_coureur\r\nWHERE nomCoureur = '$coureurs'",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 176,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "light-yellow",
+                "value": 21
+              },
+              {
+                "color": "orange",
+                "value": 81
+              },
+              {
+                "color": "red",
+                "value": 151
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 6,
+        "x": 0,
+        "y": 12
+      },
+      "id": 6,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "dataset": "aastier",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT *\r\nFROM view_moyenne_coureur\r\nWHERE nomCoureur = '${coureurs}'",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Position Moyenne",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 21,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 1
+              },
+              {
+                "color": "green",
+                "value": 4
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 6,
+        "x": 6,
+        "y": 12
+      },
+      "id": 7,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "dataset": "aastier",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT * \r\nFROM view_victoire_coureur\r\nWHERE nomCoureur = '${coureurs}'",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Nombre de Victoires d'Étapes",
+      "type": "gauge"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "J. Vingegaard",
+          "value": "J. Vingegaard"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+        },
+        "definition": "SELECT nomC FROM coureur\nORDER BY nomC",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Coureur : ",
+        "multi": false,
+        "name": "coureurs",
+        "options": [],
+        "query": "SELECT nomC FROM coureur\nORDER BY nomC",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "https://img.aso.fr/core_app/img-cycling-tdf-png/1/46724/0:0,660:1000-282-0-80/040cd",
+          "value": "https://img.aso.fr/core_app/img-cycling-tdf-png/1/46724/0:0,660:1000-282-0-80/040cd"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+        },
+        "definition": "SELECT urlPhotoC FROM coureur\nWHERE nomC = '$coureurs'",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "url",
+        "options": [],
+        "query": "SELECT urlPhotoC FROM coureur\nWHERE nomC = '$coureurs'",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "Danemark",
+          "value": "Danemark"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+        },
+        "definition": "SELECT nationalite.nationalite\nFROM coureur\nJOIN nationalite\nON coureur.idNc = nationalite.idN\nWHERE coureur.nomC = '$coureurs'",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "nationalite",
+        "options": [],
+        "query": "SELECT nationalite.nationalite\nFROM coureur\nJOIN nationalite\nON coureur.idNc = nationalite.idN\nWHERE coureur.nomC = '$coureurs'",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "DK",
+          "value": "DK"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+        },
+        "definition": "SELECT code FROM nationalite\nWHERE nationalite = '$nationalite'",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "code",
+        "options": [],
+        "query": "SELECT code FROM nationalite\nWHERE nationalite = '$nationalite'",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "Jumbo-Visma",
+          "value": "Jumbo-Visma"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+        },
+        "definition": "SELECT equipe.nomE\nFROM coureur\nJOIN equipe\nON coureur.idEquipe = equipe.idE\nWHERE coureur.nomC = '$coureurs'",
+        "description": "",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "equipe",
+        "options": [],
+        "query": "SELECT equipe.nomE\nFROM coureur\nJOIN equipe\nON coureur.idEquipe = equipe.idE\nWHERE coureur.nomC = '$coureurs'",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "12/10/1996",
+          "value": "12/10/1996"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+        },
+        "definition": "SELECT DATE_FORMAT(naissance, '%d/%m/%Y') FROM coureur\nWHERE nomC = '$coureurs'",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "date",
+        "options": [],
+        "query": "SELECT DATE_FORMAT(naissance, '%d/%m/%Y') FROM coureur\nWHERE nomC = '$coureurs'",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "1",
+          "value": "1"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+        },
+        "definition": "SELECT classementGeneral\nFROM classement\nJOIN coureur\nON coureur.idC = classement.idC\nWHERE idE = '00021'\nAND coureur.nomC = '$coureurs'",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "classement",
+        "options": [],
+        "query": "SELECT classementGeneral\nFROM classement\nJOIN coureur\nON coureur.idC = classement.idC\nWHERE idE = '00021'\nAND coureur.nomC = '$coureurs'",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Coureurs",
+  "uid": "adg7xa66setc0d",
+  "version": 45,
+  "weekStart": ""
+}

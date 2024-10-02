@@ -1,0 +1,891 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 728,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 7,
+        "x": 0,
+        "y": 0
+      },
+      "id": 16,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "# Étape ${etapes}\n---\n## Date : ${date}\n## Ville de Départ : ${villeD}\n## Ville d'Arrivée : ${villeA}\n---\n## Type d'étape : ${type}\n---\n<img src=\"https://cdn.xsolla.net/merchant-bucket-prod/files/uploaded/sitebuilder/68486/9213790f13f905ebf374bb6564d6b530.png\" alt=\"image\" width=\"150\" height=\"auto\">",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "dataset": "aastier",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "",
+          "refId": "A"
+        }
+      ],
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 9,
+        "x": 7,
+        "y": 0
+      },
+      "id": 17,
+      "options": {
+        "basemap": {
+          "config": {},
+          "name": "Layer 0",
+          "type": "osm-standard"
+        },
+        "controls": {
+          "mouseWheelZoom": true,
+          "showAttribution": false,
+          "showDebug": false,
+          "showMeasure": false,
+          "showScale": false,
+          "showZoom": true
+        },
+        "layers": [
+          {
+            "config": {
+              "showLegend": false,
+              "style": {
+                "color": {
+                  "fixed": "semi-dark-orange"
+                },
+                "opacity": 0.6,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 6,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "symbolAlign": {
+                  "horizontal": "center",
+                  "vertical": "center"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "Ville",
+            "tooltip": true,
+            "type": "markers"
+          }
+        ],
+        "tooltip": {
+          "mode": "details"
+        },
+        "view": {
+          "allLayers": true,
+          "id": "fit",
+          "lastOnly": false,
+          "lat": 0,
+          "layer": "Ville",
+          "lon": 0,
+          "padding": 5,
+          "zoom": 8
+        }
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "dataset": "aastier",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT nomV as Ville, latitude, longitude\r\nFROM ville\r\nWHERE nomV = '$villeA' \r\nOR nomV = '$villeD'",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "type": "geomap"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 150
+              },
+              {
+                "color": "red",
+                "value": 200
+              }
+            ]
+          },
+          "unit": "lengthkm"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 16,
+        "y": 0
+      },
+      "id": 12,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "dataset": "aastier",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT distance FROM etape WHERE ${etapes} = numeroEtape",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Distance de l'Étape",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 3,
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "semi-dark-yellow",
+                "value": 2000
+              },
+              {
+                "color": "red",
+                "value": 3500
+              }
+            ]
+          },
+          "unit": "lengthm"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 20,
+        "y": 0
+      },
+      "id": 14,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^denivele$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "dataset": "aastier",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT denivele FROM etape WHERE numeroEtape = '$etapes'",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Dénivelé de L'Étape",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "max": 50,
+          "min": 30,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-red",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 40
+              },
+              {
+                "color": "semi-dark-green",
+                "value": 45
+              }
+            ]
+          },
+          "unit": "velocitykmh"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 4
+      },
+      "id": 1,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 249,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^vitesseMoyenne$/",
+          "values": true
+        },
+        "showThresholdLabels": true,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "dataset": "fcastella",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT numeroEtape, vitesseMoyenne FROM view_etape_vitesse WHERE ${etapes} = numeroEtape",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Vitesse Moyenne de l'Étape",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "4ème Catégorie"
+            },
+            "properties": [
+              {
+                "id": "max"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "blue",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "3ème Catégorie"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "2ème Catégorie"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "light-yellow",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "1ère Catégorie"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "orange",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Hors-Catégorie"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 11,
+        "x": 0,
+        "y": 12
+      },
+      "id": 4,
+      "options": {
+        "displayMode": "basic",
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "dataset": "aastier",
+          "datasource": {
+            "type": "mysql",
+            "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT nbCol4 as '4ème Catégorie', nbCol3 as '3ème Catégorie', nbCol2 as '2ème Catégorie', nbCol1 as '1ère Catégorie', nbColHC as 'Hors-Catégorie' FROM view_nbcols_etape WHERE ${etapes} = numeroEtape",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Nombre de Cols",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "W6urUrAnz"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 13,
+        "x": 11,
+        "y": 12
+      },
+      "id": 18,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<table>\r\n  <tr>\r\n    <td><img src=\"${url}\" alt=\"image\" height=\"300\" width=\"auto\"><td>\r\n    <td><h3 style=\"text-align: center\">Profil d'étape fourni par ASO</h3><br><br><img src=\"https://www.aso.fr/img/dyn/event/1@2x.png\"></td>\r\n  </tr>\r\n</table>\r\n",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "dataset": "fcastella",
+          "datasource": {
+            "type": "mysql",
+            "uid": "W6urUrAnz"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "",
+          "refId": "A"
+        }
+      ],
+      "type": "text"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": "5",
+          "value": "5"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+        },
+        "definition": "SELECT numeroEtape \nFROM etape\n",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Étape : ",
+        "multi": false,
+        "name": "etapes",
+        "options": [],
+        "query": "SELECT numeroEtape \nFROM etape\n",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "Montagne",
+          "value": "Montagne"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+        },
+        "definition": "SELECT type.type\nFROM type\nJOIN etape\nON type.idT = etape.idType\nWHERE etape.numeroEtape = '$etapes'",
+        "hide": 2,
+        "includeAll": false,
+        "label": "type",
+        "multi": false,
+        "name": "type",
+        "options": [],
+        "query": "SELECT type.type\nFROM type\nJOIN etape\nON type.idT = etape.idType\nWHERE etape.numeroEtape = '$etapes'",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "Pau",
+          "value": "Pau"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+        },
+        "definition": "SELECT nomV FROM ville \nJOIN etape on etape.idVilleDepart = ville.idV \nWHERE numeroEtape = ${etapes}",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "villeD",
+        "options": [],
+        "query": "SELECT nomV FROM ville \nJOIN etape on etape.idVilleDepart = ville.idV \nWHERE numeroEtape = ${etapes}",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "Laruns",
+          "value": "Laruns"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+        },
+        "definition": "SELECT nomV FROM ville \nJOIN etape on etape.idVilleArrivee = ville.idV \nWHERE numeroEtape = ${etapes}",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "villeA",
+        "options": [],
+        "query": "SELECT nomV FROM ville \nJOIN etape on etape.idVilleArrivee = ville.idV \nWHERE numeroEtape = ${etapes}",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "05/07/2023",
+          "value": "05/07/2023"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+        },
+        "definition": "SELECT DATE_FORMAT(date, '%d/%m/%Y') FROM etape\nWHERE numeroEtape = '$etapes'",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "date",
+        "options": [],
+        "query": "SELECT DATE_FORMAT(date, '%d/%m/%Y') FROM etape\nWHERE numeroEtape = '$etapes'",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "163",
+          "value": "163"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+        },
+        "definition": "SELECT distance FROM etape\nWHERE numeroEtape = '$etapes'",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "distance",
+        "options": [],
+        "query": "SELECT distance FROM etape\nWHERE numeroEtape = '$etapes'",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "https://static.wixstatic.com/media/adfbb0_910e52b6128e446aa63c6ff201799e11~mv2.png",
+          "value": "https://static.wixstatic.com/media/adfbb0_910e52b6128e446aa63c6ff201799e11~mv2.png"
+        },
+        "datasource": {
+          "type": "mysql",
+          "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
+        },
+        "definition": "SELECT urlPhotoEt FROM etape\nWHERE numeroEtape = '$etapes'",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "url",
+        "options": [],
+        "query": "SELECT urlPhotoEt FROM etape\nWHERE numeroEtape = '$etapes'",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Étape",
+  "uid": "cdgqaifmqthj4d",
+  "version": 16,
+  "weekStart": ""
+}
