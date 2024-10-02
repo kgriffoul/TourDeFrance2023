@@ -45,7 +45,7 @@
       "pluginVersion": "11.2.0",
       "targets": [
         {
-          "dataset": "aastier",
+          "dataset": "NOM_BDD",
           "datasource": {
             "type": "mysql",
             "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
@@ -111,7 +111,7 @@
       "pluginVersion": "11.2.0",
       "targets": [
         {
-          "dataset": "fcastella",
+          "dataset": "NOM_BDD",
           "datasource": {
             "type": "mysql",
             "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
@@ -257,7 +257,7 @@
       "pluginVersion": "11.2.0",
       "targets": [
         {
-          "dataset": "aastier",
+          "dataset": "NOM_BDD",
           "datasource": {
             "type": "mysql",
             "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
@@ -357,7 +357,7 @@
       "pluginVersion": "10.4.0",
       "targets": [
         {
-          "dataset": "aastier",
+          "dataset": "NOM_BDD",
           "datasource": {
             "type": "mysql",
             "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
@@ -465,7 +465,7 @@
       "pluginVersion": "11.2.0",
       "targets": [
         {
-          "dataset": "aastier",
+          "dataset": "NOM_BDD",
           "datasource": {
             "type": "mysql",
             "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
@@ -549,7 +549,7 @@
       "pluginVersion": "11.2.0",
       "targets": [
         {
-          "dataset": "aastier",
+          "dataset": "NOM_BDD",
           "datasource": {
             "type": "mysql",
             "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
@@ -605,7 +605,7 @@
       "pluginVersion": "11.2.0",
       "targets": [
         {
-          "dataset": "aastier",
+          "dataset": "NOM_BDD",
           "datasource": {
             "type": "mysql",
             "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
@@ -671,7 +671,7 @@
       "pluginVersion": "11.2.0",
       "targets": [
         {
-          "dataset": "fcastella",
+          "dataset": "NOM_BDD",
           "datasource": {
             "type": "mysql",
             "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
@@ -757,7 +757,7 @@
       "pluginVersion": "11.2.0",
       "targets": [
         {
-          "dataset": "aastier",
+          "dataset": "NOM_BDD",
           "datasource": {
             "type": "mysql",
             "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
@@ -903,7 +903,7 @@
       "pluginVersion": "11.2.0",
       "targets": [
         {
-          "dataset": "aastier",
+          "dataset": "NOM_BDD",
           "datasource": {
             "type": "mysql",
             "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
@@ -959,7 +959,7 @@
       "pluginVersion": "11.2.0",
       "targets": [
         {
-          "dataset": "aastier",
+          "dataset": "NOM_BDD",
           "datasource": {
             "type": "mysql",
             "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
@@ -1028,7 +1028,7 @@
       "pluginVersion": "11.2.0",
       "targets": [
         {
-          "dataset": "fcastella",
+          "dataset": "NOM_BDD",
           "datasource": {
             "type": "mysql",
             "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
@@ -1116,7 +1116,7 @@
       "pluginVersion": "11.2.0",
       "targets": [
         {
-          "dataset": "fcastella",
+          "dataset": "NOM_BDD",
           "datasource": {
             "type": "mysql",
             "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
@@ -1231,7 +1231,7 @@
       "pluginVersion": "10.4.0",
       "targets": [
         {
-          "dataset": "aastier",
+          "dataset": "NOM_BDD",
           "datasource": {
             "type": "mysql",
             "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
@@ -1319,7 +1319,7 @@
       "pluginVersion": "11.2.0",
       "targets": [
         {
-          "dataset": "aastier",
+          "dataset": "NOM_BDD",
           "datasource": {
             "type": "mysql",
             "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
@@ -1407,7 +1407,7 @@
       "pluginVersion": "11.2.0",
       "targets": [
         {
-          "dataset": "aastier",
+          "dataset": "NOM_BDD",
           "datasource": {
             "type": "mysql",
             "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
@@ -1495,7 +1495,7 @@
       "pluginVersion": "11.2.0",
       "targets": [
         {
-          "dataset": "aastier",
+          "dataset": "NOM_BDD",
           "datasource": {
             "type": "mysql",
             "uid": "e53f2d07-8e8d-4761-84d7-99e202858e34"
